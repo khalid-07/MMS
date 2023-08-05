@@ -1,0 +1,230 @@
+if (nameValue == "" || objectiveValue == "" || attendeesValue == "" || locationValue == "" || discussionValue == "") {
+                    $('#feedback').removeClass().addClass('noticeui noticeui-error').html('Please fill all required fields!').show().css({
+                        'padding': '4px',
+                        'width': 'auto',
+                        'text-align': 'center',
+                        'display': 'inline-block'
+                    });
+                    if (nameValue == "") {
+                        $('#txtName').css({
+                            'border-color': 'red'
+                        });
+                    }
+                    if (objectiveValue == "") {
+                        $('#txtObjective').css({
+                            'border-color': 'red'
+                        });
+                    }
+                    if (locationValue == "") {
+                        $('#txtLocation').css({
+                            'border-color': 'red'
+                        });
+                    }
+                    if (discussionValue == "") {
+                        $('#txtDiscussion').css({
+                            'border-color': 'red'
+                        });
+                    }
+                    if (attendeesValue == "") {
+                        $('#txtAttendees').css({
+                            'border-color': 'red'
+                        });
+                    }
+                    if (!$('#nextMeetingDiv').is(":hidden")) {
+                        if (nextMeetingDateValue == "") {
+                            $('#nextMeetingDate').css({
+                                'border-color': 'red'
+                            });
+                        }
+                        if (nextMeetingDateValue != "") {
+                            $('#nextMeetingDate').css({
+                                'border-color': ''
+                            });
+                        }
+                        if (nextMeetingPurposeValue == "") {
+                            $('#txtNextMeetingPurpose').css({
+                                'border-color': 'red'
+                            });
+                        }
+
+                    }
+                    if ($num == 1) {
+
+                    } else {
+                        alert("it is hidden");
+                    }
+                    $('#txtEmail').focus();
+                    return false;
+                }
+
+                This comes after multiple if//else {
+            //$('#feedback').removeClass().html("");
+            // if ($('#txtDesc').val().length > 100) {
+            //     $('#lblLnameError').removeClass().addClass('limit-error').html('Max Limit 100').show();
+            //     return false;
+            //} 
+
+            This is from the else statement
+            /*
+                $('#lblLnameError').removeClass().html("");
+
+                $.ajax({
+                    cache: false,
+                    type: "post",
+                    url: "createMinutesCheck.php",
+                    data: {
+                        passNameValue: nameValue,
+                        passDescValue: descValue,
+                        passAttendeesValue: attendeesValue,
+                        passProcess: requestProcess
+                    },
+                    success: function(response) {
+                        //alert(data);
+                        alert(response);
+                        /* if (response.indexOf('REACH') > -1) {
+                             //$("#loadingimage2").hide();
+                             //window.location.replace("homepage.php");
+                             //return false;
+                         }
+                         /*else if (response.indexOf('not') > -1) {
+                                                            $("#loadingimage2").hide();
+                                                            $("#feedback").removeClass().addClass('noticeui noticeui-error').html('Invalid email or password').show().css({
+                                                                'padding': '4px',
+                                                                'width': 'auto',
+                                                                'text-align': 'center',
+                                                                'display': 'inline-block'
+                                                            });
+
+
+                                                        } else {
+                                                            $("#loadingimage2").hide();
+                                                            $("#feedback").removeClass().addClass('noticeui noticeui-error').html('Error in processing your request').show().css({
+                                                                'padding': '4px',
+                                                                'width': 'auto',
+                                                                'text-align': 'center',
+                                                                'display': 'inline-block'
+                                                            });
+                                                        }*/
+
+                                                        <?php
+                                        echo $row["minute_title"];
+                                        ?>
+
+                                         <!-- <input id=<?php echo $i ?> class="action" type="checkbox" value=<?php echo "check" . $i ?> onclick="checkChange(<?php echo $i ?>)" /> . -->
+
+                                         value=\"check\" . $i 
+                                         <input id=<?php echo $i ?> class="action" type="checkbox" onclick="checkChange(<?php echo $i ?>)" />
+        <button type="button" name="action" class="btn btn-info" data-checkid="yala"></button>
+
+        if ($row["id"] == 4) {
+                    $checkBox = "<input checked id=\"" . $row["id"] . "\" class=\"actioning\" type=\"checkbox\" onclick=\"checkChange(" . $row["id"] . ")\" />";
+                }
+
+                //Meeting Minutes:
+
+                <?php
+                    if (mysqli_num_rows($selectResult) > 0) {
+                        while ($row = mysqli_fetch_assoc($selectResult)) {
+
+
+                    ?>
+                            <div class="col-md-3 col-lg-3 col-xl-3 col-xs-6 col-sm-6 carda" style="padding: 20px 15px 20px 15px; margin-left:0px">
+                                <div>
+                                    <label>
+
+                                        WorkTerm
+                                    </label>
+
+                                </div>
+                                <div style="font-style:oblique;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">
+
+                                    <label style="font-style:oblique">
+                                        <?php
+                                        echo $row["minute_objective"];
+                                        ?>
+
+                                    </label>
+
+                                </div>
+                                <div style="font-style:oblique;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">
+                                    <h4 style="font-style:oblique">
+                                        <label>
+                                            <?php
+                                            $date = strtotime($row["minute_date"]);
+                                            echo date("d-m-Y H:i", $date);
+                                            ?>
+
+                                        </label>
+                                    </h4>
+                                </div>
+                                <div class="col-lg-12" style="text-align: center">
+                                    <form action="editMeetingMinute.php" method="post">
+                                        <input type="hidden" value=<?php echo $row['id'] ?> name="idField" />
+                                        <input type="submit" id="btnDetails" name="detailsButton" value="Details" class="btn btn-primary" />
+                                    </form>
+
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+
+                    //form
+                    <form action=\"detailsMeetingMinute.php\" method=\"post\">
+
+                    <div class="form-group col-xs-12 col-lg-3">
+    <label>Create a Group</label>
+    <span>
+        <input placeholder="Enter group name" class="form-control col-lg-6" />
+        <span></span>
+    </span>
+</div>
+
+style=\"background-color:#fd7e14\"
+
+
+<form method="POST" id="myform" name="myform" action="" enctype="multipart/form-data">
+
+(filename != "" && file > 5000000) || (filename != "" && extensionCheck != 0)
+
+. date("d/m/Y", strtotime($row["user_dateRegister"])) . "
+
+<div class=\"row\">
+
+                        <div class=\"text-center\">
+                            <!-- <input name=\"submitButton\" id=\"btnSignup\" type=\"button\" value=\"PRESS\" />
+                            <input name=\"checkFieldButton\" onclick=\"showHidden()\" id=\"btnCheck\" type=\"button\"
+                                value=\"Check\" /> -->
+                            <button type=\"button\" id=\"btnSignup\" name=\"submitButton\"
+                                class=\"btn btn-block buttonStyle w-50 mb-2\">Edit</button>
+
+
+                        </div>
+                         <div class="text-center mb-3">
+                    <button class="btn w-50 buttonStyle" id="editButton" onclick="enableField()">Edit
+                        profile</button>
+                    <button class="btn col-5 buttonStyle" id="cancelButton" onclick="disableField()">Cancel</button>
+                    <button class="btn col-5 buttonStyle" id="saveButton" onclick="saveForm()">Save</button>
+                </div>
+
+                <td><strong>Date</strong></td>
+            <td>" . date("d-m-Y", strtotime($row["minute_date"])) . "</td>
+            <td><strong>Time</strong></td>
+            <td>" . date("h:m:s", strtotime( $row["minute_date"])) . "</td>
+
+            <div>
+            <button id=\"printButton\" class=\"btn float-end buttonStyle mt-2 ms-2\">
+                    <i class=\"fa-sharp fa-solid fa-print\"></i> </i>Print
+                </button>
+                <!-- <button id=\"printButton\" class=\"btn float-end btn-md buttonStyle mt-2 ms-2\">Print</button> -->
+                <button id=\"printButton\" class=\"btn buttonStyle float-end btn-md mt-2 ms-2\">
+                    <i class=\"fa-sharp fa-solid fa-share-nodes\"> </i> Share
+                </button>
+                </div>
+
+                <table class=\"table table-bordered\">
+                 </table>
+
+
+                 <table class=\"table table-bordered\">

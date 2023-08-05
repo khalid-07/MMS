@@ -1,0 +1,259 @@
+body {
+    background-color: #e7e7e7;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    padding-left: 30px;
+    margin-top: 10px;
+    padding-right: 30px;
+}
+
+.child {
+    /*width: 70%;*/
+    float: none;
+    /*background-color: red;
+    /* Center horizontally*/
+    margin: 0 auto;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.btn-stop {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.buttonStyle {
+    color: #093c59;
+    /*background-color: #d6bb16;*/
+    /* background-color: #e8cb17 */
+    /* background-color: #D9DB56; */
+    /* background-color: #FFD35B; */
+    background-color: #EEDB00;
+
+}
+
+.buttonStyle:hover {
+    /* background-color: #c4ac14; */
+    background-color: #00386c;
+    color: #D9DB56;
+    /* color:black; */
+    /* color:#e8cb17; */
+}
+
+.backColor{
+    background-color: #00386c;
+    color:#EEDB00;
+}
+.requiredSymbol {
+    color: red;
+}
+
+.btn btn-primary :hover {
+    color: #AE3F2F;
+}
+
+.messagediv {
+    position: absolute;
+    background-color: #00386c;
+    color: white;
+    height: 20%;
+    width: 50%;
+    top: 25%;
+    left: 20%;
+    right: 50%;
+    opacity: 5.0;
+    border-radius: 5px;
+}
+
+#feedback {
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+#feedbackDiv {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    /* margin-top: 10px; */
+    /*position: relative;*/
+}
+
+.navbar {
+    background-color: #933628;
+}
+
+#tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+#tooltip #tooltiptext {
+    visibility: hidden;
+    width: 190px;
+    background-color: black;
+    color: #fff;
+    font-size: xx-small;
+    border-radius: 6px;
+    padding: 5px 5px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+#tooltip:hover #tooltiptext {
+    visibility: visible;
+}
+
+.noticeui {
+    background: url(../images/notice-bg.png) repeat-x 0 0;
+    color: #FFF;
+    width: 80%;
+    font-weight: normal;
+    /*padding: 5px 15px 0px 0px;*/
+
+    /*margin-bottom: 1.5em;*/
+    /* was 2.5em */
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+    /*position: relative;*/
+
+}
+
+.noticeui p {
+    margin-bottom: 1.em;
+}
+
+.noticeui p:last-child {
+    margin-bottom: 0;
+}
+
+.noticeui ul {
+    margin-left: 8px;
+    margin-bottom: 1.5em;
+}
+
+.noticeui ul:last-child {
+    margin-bottom: 0;
+}
+
+.noticeui li {
+    background: url(../images/notice-tabs.png) no-repeat 0 -95px;
+    list-style-type: none;
+    padding-left: 18px;
+    margin-bottom: .75em;
+}
+
+.noticeui-success li {
+    background-position: 0 -95px;
+}
+
+.noticeui-warn li {
+    background-position: 0 -895px;
+}
+
+.noticeui-error li {
+    background-position: 0 -495px;
+}
+
+.noticeui-info li {
+    background-position: 0 -1295px;
+}
+
+.noticeui h5 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: .65em;
+}
+
+.noticeui span {
+    background: url(../images/notice-tabs.png) no-repeat 100% 0;
+    width: 33px;
+    height: 40px;
+    position: absolute;
+    left: -34px;
+    top: 9px;
+}
+
+.noticeui-success {
+    background-color: #EEF4D4;
+    color: #596C26;
+    border: 1px solid #8FAD3D;
+}
+
+.noticeui-success span {
+    background-position: 100% 0;
+}
+
+.noticeui-warn {
+    background-color: #FFEA97;
+    color: #796100;
+    border: 1px solid #E1B500;
+}
+
+.noticeui-warn span {
+    background-position: 100% -800px;
+}
+
+.noticeui-error {
+    background-color: #EFCEC9;
+    color: #933628;
+    border: 1px solid #AE3F2F;
+
+}
+
+.noticeui-error span {
+    background-position: 100% -400px;
+}
+
+.noticeui-info {
+    background-color: #C6D8F0;
+    color: #285797;
+    border: 1px solid #4381CD;
+}
+
+.noticeui-info span {
+    background-position: 100% -1200px;
+}
+
+.limit-error {
+    color: red;
+}
+.limit {
+    display: inline-block;
+    max-width: 13ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+}

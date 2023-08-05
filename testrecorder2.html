@@ -1,0 +1,192 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/styleFile.css" type="text/css" />
+		<link
+			rel="stylesheet"
+			href="bootstrap5/bootstrap-icons-1.10.2/bootstrap-icons.css"
+			type="text/css"
+		/>
+		<script src="jquery/jquery-3.6.1.min.js" type="text/javascript"></script>
+		<script>
+			let baseValue = "";
+
+			$(document).ready(function () {
+				loadBase();
+				$("#recordImage").hide();
+				$("#stopRecord").hide();
+				function loadBase() {
+					var action = "fetchBase";
+					$.ajax({
+						url: "testSendingBase.php",
+						method: "POST",
+						data: {
+							action: action,
+						},
+						success: function (data) {
+							//alert("title: " + data)
+							$("#minuteDiv").html(data);
+						},
+					});
+				}
+			});
+			let timing = "";
+			let seconds = 0;
+			function displayTime() {
+				seconds = 00;
+				$("#showTime").html(":0" + seconds);
+				timing = setInterval(showTime, 1000);
+			}
+
+			function showTime() {
+				seconds++;
+				let hours = Math.floor(seconds / 3600);
+				let mins = Math.floor(seconds / 60) - hours * 60;
+				let secs = Math.floor(seconds % 60);
+				let output = "";
+				if (mins == 0) {
+					output = ":" + secs.toString().padStart(2, "0");
+				} else {
+					output =
+						mins.toString().padStart(2, "0") +
+						":" +
+						secs.toString().padStart(2, "0");
+				}
+
+				$("#showTime").html(output);
+			}
+		</script>
+
+		<title>Recorder App</title>
+	</head>
+	<h2>Recorder App</h2>
+	<p>
+		<!-- <button type="button" class="btn btn-primary" id="record">Record</button> -->
+		<button
+			type="button"
+			alt="record"
+			class="btn btn-danger btn-circle btn-lg"
+			id="record"
+		>
+			<i class="bi bi-mic-fill"></i>
+		</button>
+		<button
+			type="button"
+			id="stopRecord"
+			class="btn btn-circle btn-stop btn-danger rounded-0"
+			disabled
+		></button>
+		<img
+			id="recordImage"
+			src="img/stop_recording.gif"
+			height="30px"
+			width="30px"
+		/>
+		<label id="showTime" value="khalid" name="lblKhalid"></label>
+	</p>
+
+	<p>
+		<audio id="recordedAudio"></audio>
+	</p>
+	<div>
+		<audio
+			id="testAudio"
+			controls="true"
+			ccontrols
+			controlsList="nodownload"
+		></audio>
+
+		<button id="audioButton" onclick="showBase()">Check</button>
+	</div>
+
+	<script>
+		navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+			handlerFunction(stream);
+		});
+
+		function getBase() {}
+
+		function showBase() {
+			if (baseValue != "") {
+				var action = "saveBase";
+				$.ajax({
+					url: "testSendingBase.php",
+					method: "POST",
+					data: {
+						base: baseValue,
+						action: action,
+					},
+					success: function (response) {
+						alert("Hello" + response);
+						//$("#minuteDiv").html(data);
+					},
+				});
+			} else {
+				alert("Please Record the audio");
+			}
+
+			//alert(baseValue);
+		}
+		function handlerFunction(stream) {
+			rec = new MediaRecorder(stream);
+			rec.ondataavailable = (e) => {
+				audioChunks.push(e.data);
+				if (rec.state == "inactive") {
+					let blob = new Blob(audioChunks, { type: "audio/mp3" });
+					recordedAudio.src = URL.createObjectURL(blob);
+					recordedAudio.controls = true;
+					recordedAudio.controlsList = "nodownload";
+					recordedAudio.autoplay = false;
+					sendData(blob);
+				}
+			};
+		}
+
+		function sendData(data) {
+			alert(data);
+			var reader = new FileReader();
+			let base64data = "";
+			reader.readAsDataURL(data);
+			reader.onloadend = function () {
+				base64data = reader.result;
+				console.log(base64data);
+				//testAudio.src = base64data;
+				baseValue = base64data;
+			};
+			//alert(base64data + "yallllaaaa");
+			//var process = new ffmpeg("");
+			loadbase(base64data);
+		}
+		function loadbase(base) {
+			alert(base + "khalid");
+		}
+		record.onclick = (e) => {
+			//record.style.backgroundColor = "blue";
+			alert("record clicked");
+			$("#record").hide();
+			$("#stopRecord").show();
+			seconds = 0;
+			displayTime();
+			$("#showTime").show();
+			//record.disabled = true;
+			stopRecord.disabled = false;
+			$("#recordImage").show();
+			audioChunks = [];
+			rec.start();
+		};
+		stopRecord.onclick = (e) => {
+			//record.disabled = false;
+			//stop.disabled = true;
+			//record.style.backgroundColor = "red";
+			alert("stop clicked");
+			clearInterval(timing);
+			$("#record").show();
+			$("#stopRecord").hide();
+			$("#recordImage").hide();
+			$("#showTime").hide();
+
+			rec.stop();
+		};
+	</script>
+</html>
